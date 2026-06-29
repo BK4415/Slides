@@ -1,0 +1,84 @@
+{
+  "achievements": {
+    "firstWin": {
+      "id": "firstWin",
+      "name": "First Win",
+      "description": "Complete your first puzzle",
+      "emoji": "🎮",
+      "trigger": "win",
+      "condition": "gamesCompleted >= 1"
+    },
+    "tenWins": {
+      "id": "tenWins",
+      "name": "On A Roll",
+      "description": "Complete 10 puzzles",
+      "emoji": "🔟",
+      "trigger": "win",
+      "condition": "gamesCompleted >= 10"
+    },
+    "speedDemon": {
+      "id": "speedDemon",
+      "name": "Speed Demon",
+      "description": "Solve a 4×4 in under 60 seconds",
+      "emoji": "⚡",
+      "trigger": "win",
+      "condition": "size === 4 && time < 60"
+    },
+    "minimalist": {
+      "id": "minimalist",
+      "name": "Minimalist",
+      "description": "Solve a puzzle in minimum moves",
+      "emoji": "🎯",
+      "trigger": "win",
+      "condition": "moves <= theoreticalMinimum * 1.1"
+    },
+    "perfectScore": {
+      "id": "perfectScore",
+      "name": "Perfect Score",
+      "description": "Earn 3 stars on any puzzle",
+      "emoji": "⭐",
+      "trigger": "win",
+      "condition": "stars === 3"
+    },
+    "consecutiveWins": {
+      "id": "consecutiveWins",
+      "name": "On Fire",
+      "description": "Win 5 games in a row",
+      "emoji": "🔥",
+      "trigger": "win",
+      "condition": "currentStreak >= 5"
+    },
+    "photoMaster": {
+      "id": "photoMaster",
+      "name": "Photo Master",
+      "description": "Complete a photo puzzle",
+      "emoji": "🖼️",
+      "trigger": "win",
+      "condition": "photoMode === true"
+    },
+    "largeBoard": {
+      "id": "largeBoard",
+      "name": "Big Brain",
+      "description": "Solve a 7×7 puzzle",
+      "emoji": "📦",
+      "trigger": "win",
+      "condition": "size === 7"
+    },
+    "customImage": {
+      "id": "customImage",
+      "name": "Custom Creator",
+      "description": "Upload and complete a custom image puzzle",
+      "emoji": "📷",
+      "trigger": "win",
+      "condition": "photoMode && customImage === true"
+    },
+    "allModes": {
+      "id": "allModes",
+      "name": "All Modes Master",
+      "description": "Complete puzzles in all game modes",
+      "emoji": "🎪",
+      "trigger": "win",
+      "condition": "completedModes >= 4"
+    }
+  }
+}

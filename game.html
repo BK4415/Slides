@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>PrismPuzzle - Gameplay</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span class="status-time">9:41</span>
+            <span class="status-indicators">
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9h2v2H1zm4 0h2v2H5zm4 0h2v2H9zm4 0h2v2h-2zm4 0h2v2h-2zM1 13h2v2H1zm4 0h2v2H5zm4 0h2v2H9zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M1 6h22v2H1zm0 5h22v2H1zm0 5h22v2H1z"/></svg>
+            </span>
+        </div>
+
+        <!-- Game Header -->
+        <header class="game-header">
+            <button class="header-btn back-btn" id="backBtn" aria-label="Back to home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <div class="header-info">
+                <div class="hud-item">
+                    <svg class="hud-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <span id="timer">00:00</span>
+                </div>
+                <div class="hud-item">
+                    <svg class="hud-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 13h-5v5h5v-5zM16 6h-1V5h-2v1H9c-1.11 0-1.99.9-1.99 2L7 19c0 1.1.89 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm3 11h-2v2h-2v-2h-2v-2h2v-2h2v2h2v2z"/></svg>
+                    <span id="moveCounter">0</span>
+                </div>
+                <div class="hud-item">
+                    <span id="boardSize">4×4</span>
+                </div>
+            </div>
+            <button class="header-btn menu-btn" id="menuBtn" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+            </button>
+        </header>
+
+        <!-- Game Container -->
+        <main class="game-main">
+            <div class="game-wrapper">
+                <div id="gameBoard" class="game-board"></div>
+                <div class="tile-numbers-toggle" id="tileNumbersToggle" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"></circle>
+                    </svg>
+                    <span>Numbers</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Game Controls -->
+        <div class="game-controls">
+            <button class="control-btn shuffle-btn" id="shuffleBtn" aria-label="Shuffle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 1 23 7 17 7"></polyline>
+                    <polyline points="1 23 1 17 7 17"></polyline>
+                    <path d="M20.362 4.431l-2.625 2.916c-1.946-1.357-4.514-2.196-7.331-2.196C7.084 5.151 2.681 9.489 2.681 14.9c0 1.666.381 3.243 1.052 4.652M3.637 19.57l2.625-2.917c1.946 1.357 4.514 2.196 7.331 2.196 5.319 0 9.722-4.338 9.722-9.75 0-1.666-.381-3.243-1.052-4.652"></path>
+                </svg>
+            </button>
+            <button class="control-btn hint-btn" id="hintBtn" aria-label="Hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4"></path>
+                    <path d="M12 8h.01"></path>
+                </svg>
+            </button>
+            <button class="control-btn undo-btn" id="undoBtn" aria-label="Undo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 7v6h6"></path>
+                    <path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"></path>
+                </svg>
+            </button>
+            <button class="control-btn redo-btn" id="redoBtn" aria-label="Redo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 7v6h-6"></path>
+                    <path d="M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"></path>
+                </svg>
+            </button>
+            <button class="control-btn pause-btn" id="pauseBtn" aria-label="Pause">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div class="modal" id="pauseModal" style="display: none;">
+        <div class="modal-content pause-modal">
+            <h2>Game Paused</h2>
+            <div class="pause-stats">
+                <div class="stat-item">
+                    <span>Time</span>
+                    <span id="pauseTime">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span>Moves</span>
+                    <span id="pauseMoves">0</span>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-primary" id="resumeGameBtn">Resume</button>
+                <button class="btn-secondary" id="homeFromPauseBtn">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shuffle Confirmation -->
+    <div class="modal" id="shuffleConfirmModal" style="display: none;">
+        <div class="modal-content confirm-modal">
+            <h2>Restart Puzzle?</h2>
+            <p>Current progress will be lost.</p>
+            <div class="modal-buttons">
+                <button class="btn-primary" id="confirmShuffleBtn">Yes</button>
+                <button class="btn-secondary" id="cancelShuffleBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Win Popup -->
+    <div class="modal" id="winModal" style="display: none;">
+        <div class="modal-content win-modal">
+            <div class="win-header">
+                <svg class="celebration-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <h2>Congratulations!</h2>
+            </div>
+            <div class="win-stats">
+                <div class="stat-row">
+                    <span>Board Size</span>
+                    <span id="winBoardSize">4×4</span>
+                </div>
+                <div class="stat-row">
+                    <span>Mode</span>
+                    <span id="winMode">Classic</span>
+                </div>
+                <div class="stat-row">
+                    <span>Moves</span>
+                    <span id="winMoves">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Time</span>
+                    <span id="winTime">00:00</span>
+                </div>
+            </div>
+            <div class="win-rating">
+                <div class="star-display" id="starDisplay"></div>
+                <div class="rating-text" id="ratingText">Excellent!</div>
+                <div class="record-badge" id="recordBadge" style="display: none;">🏆 NEW RECORD!</div>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-primary" id="playAgainBtn">Play Again</button>
+                <button class="btn-secondary" id="shareBtn">Share</button>
+                <button class="btn-secondary" id="homeFromWinBtn">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Dropdown -->
+    <div class="menu-dropdown" id="menuDropdown" style="display: none;">
+        <button class="menu-item settings-item" id="settingsBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m0 5.08l-4.24 4.24M1 12h6m6 0h6m-5.78 4.22l4.24 4.24m0-5.08l-4.24-4.24"></path>
+            </svg>
+            Settings
+        </button>
+        <button class="menu-item help-item" id="helpBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+            </svg>
+            Help
+        </button>
+        <button class="menu-item home-item" id="homeBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+        </button>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal" style="display: none;">
+        <div class="modal-content settings-modal">
+            <button class="modal-close" id="closeSettingsBtn" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h3>Settings</h3>
+            <div class="settings-group">
+                <label class="setting-label">
+                    <input type="checkbox" id="soundToggle" checked>
+                    Sound Effects
+                </label>
+                <label class="setting-label">
+                    <input type="checkbox" id="vibrationToggle" checked>
+                    Vibration
+                </label>
+            </div>
+            <button class="reset-btn" id="resetGameBtn">Reset This Game</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="gameOverlay"></div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

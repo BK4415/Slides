@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="description" content="PrismPuzzle - Premium Sliding Puzzle Game">
+    <title>PrismPuzzle</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231a1a1a' width='192' height='192'/><rect fill='%23d2a679' x='24' y='24' width='48' height='48' rx='4'/><rect fill='%238b5a2b' x='96' y='24' width='48' height='48' rx='4'/><rect fill='%235d3a1a' x='120' y='96' width='48' height='48' rx='4'/><text x='96' y='144' font-size='32' font-weight='bold' fill='%23d2a679' text-anchor='middle'>PrismPuzzle</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231a1a1a' width='192' height='192'/><rect fill='%23d2a679' x='24' y='24' width='48' height='48' rx='4'/><rect fill='%238b5a2b' x='96' y='24' width='48' height='48' rx='4'/><rect fill='%235d3a1a' x='120' y='96' width='48' height='48' rx='4'/></svg>">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- Main Container for mobile frame -->
+    <div class="phone-frame">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span class="status-time">9:41</span>
+            <span class="status-indicators">
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9h2v2H1zm4 0h2v2H5zm4 0h2v2H9zm4 0h2v2h-2zm4 0h2v2h-2zM1 13h2v2H1zm4 0h2v2H5zm4 0h2v2H9zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M1 6h22v2H1zm0 5h22v2H1zm0 5h22v2H1z"/></svg>
+            </span>
+        </div>
+
+        <!-- Top Header -->
+        <header class="app-header">
+            <button class="header-btn info-btn" aria-label="Information">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+            </button>
+            <h1 class="app-title">PrismPuzzle</h1>
+            <button class="header-btn dashboard-btn" aria-label="Dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="home-content">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="game-logo">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="tileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d2a679;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8b5a2b;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="10" y="10" width="25" height="25" rx="3" fill="url(#tileGradient)" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="42" y="10" width="25" height="25" rx="3" fill="#a8815c" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="74" y="10" width="25" height="25" rx="3" fill="#8b5a2b" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="10" y="42" width="25" height="25" rx="3" fill="#8b5a2b" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="42" y="42" width="25" height="25" rx="3" fill="url(#tileGradient)" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="74" y="42" width="25" height="25" rx="3" fill="#d2a679" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="10" y="74" width="25" height="25" rx="3" fill="#d2a679" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="42" y="74" width="25" height="25" rx="3" fill="#a8815c" stroke="#5d3a1a" stroke-width="2"/>
+                        <rect x="74" y="74" width="25" height="25" rx="3" fill="url(#tileGradient)" stroke="#5d3a1a" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2 class="game-name">PrismPuzzle</h2>
+                <p class="game-tagline">Premium Sliding Puzzle Experience</p>
+            </div>
+
+            <!-- Style Selector -->
+            <div class="selector-group">
+                <label class="selector-label">Style</label>
+                <div class="style-selector">
+                    <button class="style-btn prev-style" aria-label="Previous style">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <span class="style-display">Number</span>
+                    <button class="style-btn next-style" aria-label="Next style">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Board Size Selector -->
+            <div class="selector-group">
+                <label class="selector-label">Board Size</label>
+                <div class="size-selector">
+                    <button class="size-btn prev-size" aria-label="Decrease size">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <span class="size-display">4×4</span>
+                    <button class="size-btn next-size" aria-label="Increase size">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="preview-container">
+                <div class="preview-board" id="previewBoard"></div>
+            </div>
+
+            <!-- Mode Selector (Number style only) -->
+            <div class="selector-group" id="modeGroup">
+                <label class="selector-label">Mode</label>
+                <div class="mode-selector">
+                    <button class="mode-btn prev-mode" aria-label="Previous mode">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <span class="mode-display">Classic</span>
+                    <button class="mode-btn next-mode" aria-label="Next mode">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Photo Upload (Photo style only) -->
+            <div class="selector-group" id="uploadGroup" style="display: none;">
+                <button class="upload-btn" id="uploadImageBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Upload Custom Image
+                </button>
+            </div>
+
+            <!-- Start Button -->
+            <button class="start-btn" id="startBtn">Play</button>
+
+            <!-- Resume Section -->
+            <div class="resume-section" id="resumeSection" style="display: none;">
+                <button class="resume-btn" id="resumeBtn">
+                    <span class="resume-icon">▶</span>
+                    Resume Game
+                </button>
+                <p class="resume-info" id="resumeInfo"></p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Image Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h3>Upload Image</h3>
+            <div class="upload-area">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p>Tap to select image</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+            <p class="upload-info">Best results with square images</p>
+        </div>
+    </div>
+
+    <!-- Information Panel -->
+    <div class="side-panel info-panel" id="infoPanel">
+        <div class="panel-header">
+            <h2>Information</h2>
+            <button class="panel-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav class="panel-nav">
+            <button class="panel-nav-btn active" data-section="about">About</button>
+            <button class="panel-nav-btn" data-section="guide">Guide</button>
+            <button class="panel-nav-btn" data-section="controls">Controls</button>
+            <button class="panel-nav-btn" data-section="rules">Rules</button>
+            <button class="panel-nav-btn" data-section="version">Version</button>
+            <button class="panel-nav-btn" data-section="privacy">Privacy</button>
+            <button class="panel-nav-btn" data-section="terms">Terms</button>
+            <button class="panel-nav-btn" data-section="credits">Credits</button>
+        </nav>
+        <div class="panel-content">
+            <div class="section active" data-section="about">
+                <h3>About PrismPuzzle</h3>
+                <p>Experience the ultimate sliding puzzle game with premium wood aesthetics and smooth 60FPS gameplay. Solve puzzles with numbers or your own photos.</p>
+                <h4>Features</h4>
+                <ul>
+                    <li>Multiple difficulty levels (3×3 to 7×7)</li>
+                    <li>Number and Photo styles</li>
+                    <li>Multiple game modes</li>
+                    <li>Real-time achievements</li>
+                    <li>Offline gameplay</li>
+                    <li>100% privacy - no data collection</li>
+                </ul>
+            </div>
+            <div class="section" data-section="guide">
+                <h3>Quick Start Guide</h3>
+                <ol>
+                    <li>Select your preferred style (Number or Photo)</li>
+                    <li>Choose board size (3×3 to 7×7)</li>
+                    <li>Pick a game mode</li>
+                    <li>Tap Play to start</li>
+                    <li>Drag tiles to slide them</li>
+                    <li>Solve the puzzle!</li>
+                </ol>
+            </div>
+            <div class="section" data-section="controls">
+                <h3>Controls</h3>
+                <h4>Dragging</h4>
+                <p>Tap and drag a tile to move it. All connected tiles slide together.</p>
+                <h4>Buttons</h4>
+                <p><strong>Shuffle:</strong> Randomize the board (before first move)</p>
+                <p><strong>Undo:</strong> Revert last move</p>
+                <p><strong>Redo:</strong> Forward to next move</p>
+                <p><strong>Hint:</strong> Show next move suggestion</p>
+                <p><strong>Pause:</strong> Pause the game</p>
+            </div>
+            <div class="section" data-section="rules">
+                <h3>Puzzle Rules</h3>
+                <h4>Solvability</h4>
+                <p>All puzzles are guaranteed to be solvable.</p>
+                <h4>Scoring</h4>
+                <p>Your score is based on moves and time taken. Fewer moves and less time = higher rating.</p>
+                <h4>Star Ratings</h4>
+                <p>Earn up to 3 stars based on your performance compared to your personal best.</p>
+            </div>
+            <div class="section" data-section="version">
+                <h3>Version</h3>
+                <p><strong>PrismPuzzle v1.0.0</strong></p>
+                <p>Released: 2024</p>
+                <p>Built with vanilla HTML5, CSS3, and JavaScript.</p>
+            </div>
+            <div class="section" data-section="privacy">
+                <h3>Privacy Policy</h3>
+                <p>Your privacy is important to us.</p>
+                <h4>Data Collection</h4>
+                <p>PrismPuzzle does <strong>not</strong> collect any personal data. All game data is stored locally on your device.</p>
+                <h4>Local Storage</h4>
+                <p>Game statistics and preferences are stored only in your browser's local storage.</p>
+                <h4>Offline Mode</h4>
+                <p>The game works 100% offline. No data is sent to servers.</p>
+            </div>
+            <div class="section" data-section="terms">
+                <h3>Terms & Conditions</h3>
+                <p><strong>License:</strong> This game is provided as-is for entertainment purposes.</p>
+                <p><strong>User Content:</strong> When you upload images, they are processed locally and never stored or transmitted.</p>
+                <p><strong>Disclaimer:</strong> This game is provided without warranty.</p>
+            </div>
+            <div class="section" data-section="credits">
+                <h3>Credits</h3>
+                <p><strong>Design & Development:</strong> PrismPuzzle Team</p>
+                <p><strong>Inspired by:</strong> Classic sliding puzzle games</p>
+                <p><strong>Technology:</strong> HTML5, CSS3, JavaScript ES6+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Panel -->
+    <div class="side-panel dashboard-panel" id="dashboardPanel">
+        <div class="panel-header">
+            <h2>Dashboard</h2>
+            <button class="panel-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="panel-content dashboard-content">
+            <div class="stat-group">
+                <div class="stat">
+                    <div class="stat-label">Games Played</div>
+                    <div class="stat-value" id="gamesPlayed">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Completion %</div>
+                    <div class="stat-value" id="completionPercent">0%</div>
+                </div>
+            </div>
+
+            <div class="stat-section">
+                <h3>Personal Bests</h3>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-label">Best Time</div>
+                        <div class="stat-value" id="bestTime">--:--</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Best Moves</div>
+                        <div class="stat-value" id="bestMoves">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-section">
+                <h3>Streaks</h3>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-label">Current</div>
+                        <div class="stat-value" id="currentStreak">0</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Best</div>
+                        <div class="stat-value" id="bestStreak">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-section">
+                <h3>Preferences</h3>
+                <div class="stat">
+                    <div class="stat-label">Favourite Style</div>
+                    <div class="stat-value" id="favStyle">-</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Favourite Size</div>
+                    <div class="stat-value" id="favSize">-</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Favourite Mode</div>
+                    <div class="stat-value" id="favMode">-</div>
+                </div>
+            </div>
+
+            <div class="stat-section">
+                <h3>Achievements</h3>
+                <div class="achievement-grid" id="achievementGrid"></div>
+            </div>
+
+            <button class="reset-btn" id="resetDataBtn">Reset All Data</button>
+        </div>
+    </div>
+
+    <!-- Overlay for panels -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/preview.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

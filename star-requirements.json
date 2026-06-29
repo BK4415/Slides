@@ -1,0 +1,74 @@
+{
+  "starRequirements": {
+    "3": {
+      "oneStar": {
+        "moves": 50,
+        "timeSeconds": 180
+      },
+      "twoStars": {
+        "moves": 30,
+        "timeSeconds": 60
+      },
+      "threeStars": {
+        "moves": 15,
+        "timeSeconds": 30
+      }
+    },
+    "4": {
+      "oneStar": {
+        "moves": 100,
+        "timeSeconds": 600
+      },
+      "twoStars": {
+        "moves": 50,
+        "timeSeconds": 180
+      },
+      "threeStars": {
+        "moves": 25,
+        "timeSeconds": 90
+      }
+    },
+    "5": {
+      "oneStar": {
+        "moves": 150,
+        "timeSeconds": 1200
+      },
+      "twoStars": {
+        "moves": 80,
+        "timeSeconds": 600
+      },
+      "threeStars": {
+        "moves": 40,
+        "timeSeconds": 300
+      }
+    },
+    "6": {
+      "oneStar": {
+        "moves": 200,
+        "timeSeconds": 1800
+      },
+      "twoStars": {
+        "moves": 120,
+        "timeSeconds": 900
+      },
+      "threeStars": {
+        "moves": 60,
+        "timeSeconds": 450
+      }
+    },
+    "7": {
+      "oneStar": {
+        "moves": 300,
+        "timeSeconds": 2400
+      },
+      "twoStars": {
+        "moves": 180,
+        "timeSeconds": 1200
+      },
+      "threeStars": {
+        "moves": 90,
+        "timeSeconds": 600
+      }
+    }
+  }
+}
